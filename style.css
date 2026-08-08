@@ -1,0 +1,362 @@
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #0b0b0b;
+    color: #fefefe;
+    overflow-x: hidden;
+}
+
+/* Custom Smooth Mouse Follower */
+#minicircle {
+    transition: transform 0.12s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease;
+    width: 12px;
+    height: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    border-radius: 50%;
+    background-color: #ffffff;
+    pointer-events: none; /* Prevents cursor from blocking clicks */
+    mix-blend-mode: difference;
+}
+
+.bounding {
+    width: fit-content;
+    overflow: hidden;
+}
+
+.bounding .boundingelem {
+    transform: translateY(100%);
+}
+
+#main {
+    width: 100%;
+    background-color: #0b0b0b;
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}
+
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 40px;
+}
+
+#nav a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+#nav a:hover {
+    color: #ffffff;
+}
+
+.nav-right {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+#heading {
+    margin-top: 20px;
+    padding: 0 40px;
+}
+
+#heading h1 {
+    opacity: 0.85;
+    line-height: 0.9;
+    font-size: 8.5vw;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+#heading #secondh1 {
+    margin-left: 10vw;
+}
+
+.blocktext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.blocktext h5 {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+#chotiheadings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 40px;
+}
+
+#chotiheadings h5 {
+    text-transform: uppercase;
+    margin-top: 0.4vw;
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+#herofooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+}
+
+#herofooter a {
+    color: #b0b0b0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+#herofooter a:hover {
+    color: #ffffff;
+}
+
+#herofooter #iconset {
+    display: flex;
+    gap: 10px;
+}
+
+#herofooter .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #222222;
+    color: #ffffff;
+    border: 1px solid #333;
+}
+
+/* Hover Image Revealer Section */
+#second {
+    color: white;
+    padding: 100px 40px;
+    width: 100%;
+}
+
+.elem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 3.5vw 1vw;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.elemlast {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.elem h1 {
+    text-transform: uppercase;
+    font-size: 4vw;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.elem h5 {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.elem:hover h1 {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.elem img {
+    height: 230px;
+    width: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* About Section */
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    padding: 120px 40px;
+}
+
+#imageabout img {
+    width: 280px;
+    height: 360px;
+    border-radius: 12px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease;
+}
+
+#imageabout img:hover {
+    filter: grayscale(0%);
+}
+
+#textabout {
+    max-width: 500px;
+}
+
+#textabout h5 {
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+#textabout p {
+    line-height: 1.7;
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+#textabout p strong {
+    color: #ffffff;
+}
+
+#textabout .cta-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#textabout .cta-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Technical Stack Banner */
+#subscribe {
+    padding: 60px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#subscribe h5 {
+    text-transform: uppercase;
+    font-size: 14px;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+#subscribe h3 {
+    text-transform: uppercase;
+    font-size: 2vw;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    color: #e0e0e0;
+}
+
+/* Footer */
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#footerleft {
+    display: flex;
+    gap: 20px;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+#footerright {
+    display: flex;
+    gap: 25px;
+}
+
+#footerright a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#footerright a:hover {
+    opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #heading h1 {
+        font-size: 12vw;
+    }
+    #heading #secondh1 {
+        margin-left: 0;
+    }
+    #about {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .elem h1 {
+        font-size: 6vw;
+    }
+    #subscribe h3 {
+        font-size: 18px;
+    }
+    #herofooter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
