@@ -116,7 +116,7 @@
 
         <!-- Interactive CLI Section -->
         <section id="terminal-section" data-scroll-section>
-            <div class="terminal-container">
+            <div class="terminal-container" onclick="document.getElementById('terminal-input').focus()">
                 <div class="terminal-header">
                     <div class="terminal-buttons">
                         <span class="dot red"></span>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="terminal-input-row">
                     <span class="term-prompt">ismail@dev:~$</span>
-                    <input type="text" id="terminal-input" placeholder="try 'skills', 'about', or 'clear'..." autocomplete="off">
+                    <input type="text" id="terminal-input" placeholder="try 'skills', 'about', or 'clear'..." autocomplete="off" onkeydown="handleTerminalKey(event, this)">
                 </div>
             </div>
         </section>
