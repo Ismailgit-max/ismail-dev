@@ -58,10 +58,14 @@ function circleFollower() {
         yprev = e.clientY;
 
         const circle = document.querySelector("#minicircle");
-        circle.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px) scale(${xscale}, ${yscale})`;
+        if (circle) {
+            circle.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px) scale(${xscale}, ${yscale})`;
+        }
 
         timeout = setTimeout(() => {
-            circle.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px) scale(1, 1)`;
+            if (circle) {
+                circle.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px) scale(1, 1)`;
+            }
         }, 100);
     });
 }
@@ -73,6 +77,7 @@ function imageHoverEffect() {
         let diffrot = 0;
 
         const img = elem.querySelector("img");
+        if (!img) return;
 
         elem.addEventListener("mouseleave", () => {
             gsap.to(img, {
@@ -102,9 +107,105 @@ function imageHoverEffect() {
     });
 }
 
-// Initialize All Effects
+// Resume Modal Functionality
+function initResumeModal() {
+    const openBtns = document.querySelectorAll("#open-resume-btn, .open-resume-nav");
+    const closeBtn = document.querySelector("#close-resume-btn");
+    const modal = document.querySelector("#resume-modal");
+
+    if (!modal) return;
+
+    function openModal() {
+        modal.classList.add("active");
+        if (typeof scroll !== "undefined" && scroll) scroll.stop();
+    }
+
+    function closeModal() {
+        modal.classList.remove("active");
+        if (typeof scroll !== "undefined" && scroll) scroll.start();
+    }
+
+    openBtns.forEach(btn => {
+        btn.addEventListener("click", openModal);
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+}
+
+// Interactive Terminal Key Event Handler (called inline from HTML onkeydown)
+function handleTerminalKey(event, input) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+
+        const body = document.querySelector("#terminal-body");
+        if (!body) return;
+
+        const val = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (val === "") return;
+
+        const commands = {
+            help: "Available commands: <span class='highlight'>about</span>, <span class='highlight'>skills</span>, <span class='highlight'>github</span>, <span class='highlight'>contact</span>, <span class='highlight'>clear</span>",
+            about: "Mohammad Ismail Muddassir — Java Backend Developer & AI/ML Intern proficient in Spring Boot & REST APIs.",
+            skills: "Core: Java, Spring Boot, MySQL, Python, REST APIs, Microservices, Git, Docker.",
+            github: "Check out my repositories at <a href='https://github.com/Ismailgit-max' target='_blank' style='color:#8be9fd;'>github.com/Ismailgit-max</a>",
+            contact: "Email: mdismail4ces@gmail.com | Location: Kalaburagi, Karnataka"
+        };
+
+        // Output user line
+        const userLine = document.createElement("p");
+        userLine.className = "term-line";
+        userLine.innerHTML = `<span class="term-prompt">ismail@dev:~$</span> ${val}`;
+        body.appendChild(userLine);
+
+        // Process command
+        if (val === "clear") {
+            body.innerHTML = "";
+        } else if (commands[val]) {
+            const responseLine = document.createElement("p");
+            responseLine.className = "term-line";
+            responseLine.innerHTML = commands[val];
+            body.appendChild(responseLine);
+        } else {
+            const errLine = document.createElement("p");
+            errLine.className = "term-line";
+            errLine.style.color = "#ff5555";
+            errLine.textContent = `Command not recognized: '${val}'. Type 'help' for options.`;
+            body.appendChild(errLine);
+        }
+
+        body.scrollTop = body.scrollHeight;
+    }
+}
+
+// Initialize Terminal Focus Listener
+function initTerminal() {
+    const input = document.querySelector("#terminal-input");
+    const container = document.querySelector(".terminal-container");
+
+    if (container && input) {
+        container.addEventListener("click", () => {
+            input.focus();
+        });
+    }
+}
+
+// Initialize All Page Functions
 document.addEventListener("DOMContentLoaded", () => {
     firstPageAnim();
     circleFollower();
     imageHoverEffect();
+    initResumeModal();
+    initTerminal();
 });

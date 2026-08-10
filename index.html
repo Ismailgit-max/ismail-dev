@@ -25,6 +25,7 @@
                 <div class="nav-right">
                     <a href="#about">About</a>
                     <a href="#projects">Work</a>
+                    <a href="javascript:void(0)" class="open-resume-nav">Resume</a>
                     <a href="mailto:mdismail4ces@gmail.com" class="btn-contact">Contact</a>
                 </div>
             </nav>
@@ -38,7 +39,7 @@
                         <h1 class="boundingelem" id="secondh1">Developer</h1>
                     </div>
                     <div class="bounding">
-                        <h5 class="boundingelem">Kalaburagi, Karnataka, India | CSE Graduate | Full-Stack Developer,</h5>
+                        <h5 class="boundingelem">Kalaburagi, Karnataka, India | CSE Graduate | Full-Stack Developer</h5>
                     </div>
                 </div>
             </div>
@@ -63,7 +64,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Projects / Interactive List -->
         <section id="projects" data-scroll-section>
             <div id="second">
@@ -98,7 +99,12 @@
                     <span>Java Backend Developer &amp; AI/ML Intern</span><br><br>
                     Results-oriented Java Backend Developer proficient in Spring Boot, MySQL, RESTful API architecture, and Python. Experienced in building scalable systems, including AI-driven analytical tools and end-to-end web applications.
                 </p>
-                <a href="mailto:mdismail4ces@gmail.com" class="cta-btn">Let's talk</a>
+                <div class="cta-group">
+                    <a href="mailto:mdismail4ces@gmail.com" class="cta-btn">Let's talk</a>
+                    <button id="open-resume-btn" class="cta-btn secondary-btn">
+                        <i class="ri-file-pdf-2-line"></i> Check Resume
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -106,6 +112,27 @@
         <section id="subscribe" data-scroll-section>
             <h5>(Technical Stack)</h5>
             <h3>Java &bull; Spring Boot &bull; MySQL &bull; Python &bull; REST APIs &bull; Docker</h3>
+        </section>
+
+        <!-- Interactive CLI Section -->
+        <section id="terminal-section" data-scroll-section>
+            <div class="terminal-container" onclick="document.getElementById('terminal-input').focus()">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">ismail@backend-dev:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <p class="term-line"><span class="term-prompt">ismail@dev:~$</span> Type <span class="highlight">'help'</span> for available commands.</p>
+                </div>
+                <div class="terminal-input-row">
+                    <span class="term-prompt">ismail@dev:~$</span>
+                    <input type="text" id="terminal-input" placeholder="try 'skills', 'about', or 'clear'..." autocomplete="off" onkeydown="handleTerminalKey(event, this)">
+                </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -120,6 +147,202 @@
                 <a href="mailto:mdismail4ces@gmail.com">Email</a>
             </div>
         </footer>
+    </div>
+
+    <!-- Resume Viewer Modal -->
+    <div id="resume-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-file-user-line"></i> Mohammad_Ismail_Resume.pdf</h3>
+                <div class="modal-actions">
+                    <a href="ismail.pdf" download="Mohammad_Ismail_Resume.pdf" class="modal-btn download-btn">
+                        <i class="ri-download-2-line"></i> Download
+                    </a>
+                    <button id="close-resume-btn" class="modal-btn close-btn" aria-label="Close modal">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe src="ismail.pdf" title="Resume Preview" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- GSAP & Locomotive Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Ismail Muddassir | Java Backend Developer</title>
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Locomotive Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="minicircle"></div>
+
+    <div id="main" data-scroll-container>
+        <!-- Hero Section -->
+        <section id="hero" data-scroll-section>
+            <nav id="nav">
+                <a href="#" class="brand-logo">Ismail Dev</a>
+                <div class="nav-right">
+                    <a href="#about">About</a>
+                    <a href="#projects">Work</a>
+                    <a href="javascript:void(0)" class="open-resume-nav">Resume</a>
+                    <a href="mailto:mdismail4ces@gmail.com" class="btn-contact">Contact</a>
+                </div>
+            </nav>
+
+            <div id="heading">
+                <div class="bounding">
+                    <h1 class="boundingelem">Full Stack</h1>
+                </div>
+                <div class="blocktext">
+                    <div class="bounding">
+                        <h1 class="boundingelem" id="secondh1">Developer</h1>
+                    </div>
+                    <div class="bounding">
+                        <h5 class="boundingelem">Kalaburagi, Karnataka, India | CSE Graduate | Full-Stack Developer</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chotiheadings">
+                <div class="bounding">
+                    <h5 class="boundingelem">Available For Software Roles</h5>
+                </div>
+                <div class="bounding">
+                    <h5 class="boundingelem">AI/ML Intern &bull; March 2026</h5>
+                </div>
+            </div>
+
+            <div id="herofooter">
+                <a href="https://github.com/Ismailgit-max" target="_blank" rel="noopener">
+                    Previously at Kodnest Technologies <i class="ri-arrow-right-up-line"></i>
+                </a>
+                <a href="#">Five Seven IT Solutions</a>
+
+                <div id="iconset">
+                    <div class="circle"><i class="ri-arrow-down-line"></i></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects / Interactive List -->
+        <section id="projects" data-scroll-section>
+            <div id="second">
+                <div class="elem">
+                    <img src="theplug1.png" alt="AI Resume Analyzer Preview">
+                    <h1>Java Backend Engineer</h1>
+                    <h5>2026</h5>
+                </div>
+                <div class="elem">
+                    <img src="hello.png" alt="Spring Boot APIs Preview">
+                    <h1>Spring Boot &amp; REST APIs</h1>
+                    <h5>2026</h5>
+                </div>
+                <div class="elem elemlast">
+                    <img src="books.png" alt="MySQL Architecture Preview">
+                    <h1>MySQL &amp; DB Architecture</h1>
+                    <h5>2026</h5>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" data-scroll-section>
+            <div id="imageabout">
+                <img src="ismail.jpeg" alt="Mohammad Ismail Muddassir" />
+            </div>
+            
+            <div id="textabout">
+                <h5>(About me)</h5>
+                <p>
+                    <strong>Mohammad Ismail Muddassir</strong><br>
+                    <span>Java Backend Developer &amp; AI/ML Intern</span><br><br>
+                    Results-oriented Java Backend Developer proficient in Spring Boot, MySQL, RESTful API architecture, and Python. Experienced in building scalable systems, including AI-driven analytical tools and end-to-end web applications.
+                </p>
+                <div class="cta-group">
+                    <a href="mailto:mdismail4ces@gmail.com" class="cta-btn">Let's talk</a>
+                    <button id="open-resume-btn" class="cta-btn secondary-btn">
+                        <i class="ri-file-pdf-2-line"></i> Check Resume
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Banner Section -->
+        <section id="subscribe" data-scroll-section>
+            <h5>(Technical Stack)</h5>
+            <h3>Java &bull; Spring Boot &bull; MySQL &bull; Python &bull; REST APIs &bull; Docker</h3>
+        </section>
+
+        <!-- Interactive CLI Section -->
+        <section id="terminal-section" data-scroll-section>
+            <div class="terminal-container" onclick="document.getElementById('terminal-input').focus()">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">ismail@backend-dev:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <p class="term-line"><span class="term-prompt">ismail@dev:~$</span> Type <span class="highlight">'help'</span> for available commands.</p>
+                </div>
+                <div class="terminal-input-row">
+                    <span class="term-prompt">ismail@dev:~$</span>
+                    <input type="text" id="terminal-input" placeholder="try 'skills', 'about', or 'clear'..." autocomplete="off" onkeydown="handleTerminalKey(event, this)">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer" data-scroll-section>
+            <div id="footerleft">
+                <h5>2026 &copy;</h5>
+                <h5>Mohammad Ismail Muddassir</h5>
+            </div>
+            <div id="footerright">
+                <a href="https://github.com/Ismailgit-max" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/mohammed-ismail-muddassir-44027b402" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:mdismail4ces@gmail.com">Email</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Resume Viewer Modal -->
+    <div id="resume-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-file-user-line"></i> Mohammad_Ismail_Resume.pdf</h3>
+                <div class="modal-actions">
+                    <a href="ismail.pdf" download="Mohammad_Ismail_Resume.pdf" class="modal-btn download-btn">
+                        <i class="ri-download-2-line"></i> Download
+                    </a>
+                    <button id="close-resume-btn" class="modal-btn close-btn" aria-label="Close modal">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe src="ismail.pdf" title="Resume Preview" frameborder="0"></iframe>
+            </div>
+        </div>
     </div>
 
     <!-- GSAP & Locomotive Scripts -->

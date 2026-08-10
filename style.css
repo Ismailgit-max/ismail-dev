@@ -28,6 +28,7 @@ html, body {
     background-color: #ffffff;
     pointer-events: none; /* Prevents cursor from blocking clicks */
     mix-blend-mode: difference;
+  
 }
 
 .bounding {
@@ -263,14 +264,26 @@ html, body {
     color: #ffffff;
 }
 
+/* CTA Buttons Layout */
+.cta-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 #textabout .cta-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px 28px;
     border: 1px solid #ffffff;
     border-radius: 50px;
     color: #ffffff;
     font-size: 15px;
     text-decoration: none;
+    background: transparent;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -335,6 +348,117 @@ html, body {
     opacity: 1;
 }
 
+/* Resume Modal Window */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background-color: #1c1c1c;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.download-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+}
+
+.download-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 8px;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    flex: 1;
+    width: 100%;
+    background-color: #2a2a2a;
+}
+
+.modal-body iframe {
+    width: 100%;
+    height: 100%;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     #heading h1 {
@@ -359,4 +483,94 @@ html, body {
         align-items: flex-start;
         gap: 15px;
     }
+    .modal-content {
+        width: 95%;
+        height: 90vh;
+    }
+}
+
+#terminal-section {
+    padding: 60px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.terminal-container {
+    width: 100%;
+    max-width: 850px;
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.terminal-header {
+    background-color: #1c1c1c;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.terminal-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: #888;
+}
+
+.terminal-body {
+    padding: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.term-line {
+    margin-bottom: 8px;
+    color: #d4d4d4;
+}
+
+.term-prompt {
+    color: #4af626;
+    margin-right: 8px;
+}
+
+.highlight {
+    color: #f1fa8c;
+}
+
+.terminal-input-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 20px;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    flex: 1;
 }
